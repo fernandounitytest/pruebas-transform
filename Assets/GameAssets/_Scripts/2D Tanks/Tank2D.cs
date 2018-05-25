@@ -14,9 +14,37 @@ public class Tank2D : MonoBehaviour {
 	void Update () {
         if (targetTile != null)
         {
-            //MoveToTileWithTranslate();
-            MoveToTileWithMoveTowards();
+            if (IsLookingAtTargetTile())
+            {
+                //MoveToTileWithTranslate();//Movimiento con traslate
+                MoveToTileWithMoveTowards();//Movimiento con towards
+            } else
+            {
+                RotateToTileWithRotateTowards();
+            }
         }
+    }
+
+    private bool IsLookingAtTargetTile()
+    {
+        Vector3 lookingDirection = this.transform.forward;
+        Vector3 targetDirection = targetTile.transform.position - this.transform.position;
+        float angle = Vector3.Angle(lookingDirection, targetDirection);
+        if (angle<=1f)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void RotateToTileWithRotateTowards()
+    {
+        Vector3 targetDirection = targetTile.transform.position - this.transform.position;
+        this.transform.forward = Vector3.RotateTowards(
+            this.transform.forward, 
+            targetDirection,
+            Mathf.PI / 2 * Time.deltaTime, 
+            0);
     }
 
     private void MoveToTileWithTranslate()
