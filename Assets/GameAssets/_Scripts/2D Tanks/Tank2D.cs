@@ -5,8 +5,9 @@ using UnityEngine;
 public class Tank2D : MonoBehaviour {
     private Tile2D targetTile;
     public float speed = 10f;
-	// Use this for initialization
-	void Start () {
+    private float rotationSpeedDegrees = 90f;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -43,7 +44,8 @@ public class Tank2D : MonoBehaviour {
         this.transform.forward = Vector3.RotateTowards(
             this.transform.forward, 
             targetDirection,
-            Mathf.PI / 2 * Time.deltaTime, 
+            //Mathf.PI / 2 * Time.deltaTime, //En radianes
+            rotationSpeedDegrees * Mathf.Deg2Rad * Time.deltaTime, //En grados
             0);
     }
 

@@ -5,9 +5,12 @@ using UnityEngine;
 public class Tile2D : MonoBehaviour {
     private Tank2D tank;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         tank = GameObject.Find("Tank").GetComponent<Tank2D>();
         Debug.Log("El tanque se llama:" + tank.name);
+        float randomGray = Random.Range(0.7f, 1f);
+        GetComponent<SpriteRenderer>().color = new Color(randomGray, randomGray, randomGray);
 	}
 	
 	// Update is called once per frame
