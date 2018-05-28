@@ -20,8 +20,17 @@ public class Tile2D : MonoBehaviour {
 
     private void OnMouseUpAsButton()
     {
-        Debug.Log("He pulsado sobre la casilla " + this.name);
-        tank.MoveToTile(this);
+        if (!Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonUp(0))//Click izquierdo
+        {
+            Debug.Log("He pulsado sobre la casilla " + this.name);
+            tank.MoveToTile(this);
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonUp(0))//Click izquierdo + shift
+        {
+            Debug.Log("He pulsado boton derecho sobre la casilla " + this.name);
+            tank.AttackToTile(this);
+        }
+        
     }
 
     /*

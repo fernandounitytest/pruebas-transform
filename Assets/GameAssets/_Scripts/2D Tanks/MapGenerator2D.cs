@@ -10,7 +10,11 @@ public class MapGenerator2D : MonoBehaviour {
 
     [Header("Map config")]//Para el editor
     [SerializeField] private float tileSize = 1;
-    [SerializeField] private Vector2Int mapSize = new Vector2Int(10, 5);
+    [SerializeField] private Vector2Int mapSize = new Vector2Int(5, 10);
+
+    [Header("Enemy config")]
+    [SerializeField] private int nEnemies = 5;
+    
 
     public void Awake()
     {
@@ -20,9 +24,9 @@ public class MapGenerator2D : MonoBehaviour {
 
     private void GenerateTiles()
     {
-        for (int column = 0; column < mapSize.y; column++)
+        for (int row = 0; row < mapSize.y; row++)
         {
-            for (int row = 0; row < mapSize.x; row++)
+            for (int column = 0; column < mapSize.x; column++)
             {
                 int randomTileIndex = (int)Random.Range(0, tilePrefabs.Length);
                 Tile2D newTile = Instantiate(tilePrefabs[randomTileIndex]);
@@ -37,9 +41,16 @@ public class MapGenerator2D : MonoBehaviour {
 
     private void GenerateTanks()
     {
-
+        for (int i=0;i<nEnemies;i++)
+        {
+            int randomTankIndex = Random.Range(0, tankPrefabs.Length);
+            GameObject randomTankPrefab = this.tankPrefabs[randomTankIndex];//Cogemos un prefab al azar
+            GameObject newTank = Instantiate(randomTankPrefab);//Hacemos una instancia del prefab
+            int randomX = Random.Range(0, mapSize.x);
+            int randomZ = Random.Range(0, mapSize.y);
+            newTank.transform.position = new Vector3(randomX * tileSize, 0, randomZ * tileSize);
+        }
     }
-
 
     // Use this for initialization
     void Start () {

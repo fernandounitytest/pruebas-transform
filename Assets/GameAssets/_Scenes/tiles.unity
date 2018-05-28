@@ -293,6 +293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  attackPrefab: {fileID: 1178832492312140, guid: 96adedf8ab9e65c49a270915ad95dabe,
+    type: 2}
 --- !u!1 &1114673708
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +347,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -368,7 +370,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1114673708}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 8.5, y: 10, z: 4.5}
+  m_LocalPosition: {x: 9.25, y: 10, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -404,9 +406,14 @@ MonoBehaviour:
   tilePrefabs:
   - {fileID: 114015488128692642, guid: 36e80480607770e48b570462887db3e6, type: 2}
   - {fileID: 114816285995738644, guid: b45fff1ed4e558a4a882e7e5017d90b2, type: 2}
-  tankPrefabs: []
+  tankPrefabs:
+  - {fileID: 1430564671059526, guid: 22adb46fd0f2f8543991e3cea8631a3e, type: 2}
+  - {fileID: 1785430483861898, guid: d88ddd92ddf9b8b49827a06b5a4a2a64, type: 2}
+  - {fileID: 1525442632188732, guid: bf2adc7ba4f73fd4d91a2a2041e49d78, type: 2}
+  - {fileID: 1643230583954614, guid: 83763465347f54b458f835298a887396, type: 2}
   tileSize: 1
-  mapSize: {x: 10, y: 20}
+  mapSize: {x: 20, y: 10}
+  nEnemies: 12
 --- !u!4 &1857630248
 Transform:
   m_ObjectHideFlags: 0

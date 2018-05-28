@@ -6,6 +6,9 @@ public class Tank2D : MonoBehaviour {
     private Tile2D targetTile;
     public float speed = 10f;
     private float rotationSpeedDegrees = 90f;
+
+    [SerializeField] GameObject attackPrefab;
+
     // Use this for initialization
     void Start () {
 		
@@ -70,5 +73,11 @@ public class Tank2D : MonoBehaviour {
     public void MoveToTile(Tile2D tile)
     {
         targetTile = tile;
+    }
+
+    public void AttackToTile(Tile2D tile)
+    {
+        GameObject newExplosion = Instantiate(attackPrefab);
+        newExplosion.transform.position = tile.transform.position;
     }
 }
